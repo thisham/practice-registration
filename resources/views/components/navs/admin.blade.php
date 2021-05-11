@@ -1,12 +1,12 @@
-<nav class="indigo">
+<nav class="white">
     <div class="nav-wrapper container">
         <div class="row">
             <div class="col l6 m12 s12">
-                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large show-on-medium-and-down">
+                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large show-on-medium-and-down black-text">
                     <i class="material-icons">menu</i>
                 </a>
 
-                <a href="#" class="brand-logo center">UPT Laboratorium Pusat</a>	
+                <a href="#" class="brand-logo center black-text">UPT Laboratorium Pusat</a>	
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
         </div>
     </li>
 
-    <li {{ ($page == "home")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-home') }}">
+    <li {{ ($page == "home")? 'class=active': '' }}><a class="waves-effect" href="{{ route('home') }}">
         <i class="material-icons left">home</i>Dashboard
     </a></li>
 
@@ -40,7 +40,7 @@
         <i class="material-icons left">description</i>Rencana Praktikum
     </a></li>
 
-    <li {{ ($page == "practice-histories")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-plans') }}">
+    <li {{ ($page == "practice-histories")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-histories') }}">
         <i class="material-icons left">description</i>Riwayat Praktikum
     </a></li>
 
@@ -48,23 +48,29 @@
     
     <li><a class="subheader">Manajemen</a></li>
 
-    <li {{ ($page == "tools")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-new-practices') }}">
-        <i class="material-icons left">group</i>Alat
+    <li {{ ($page == "tools")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-manage-tools') }}">
+        <i class="material-icons left">architecture</i>Alat
+    </a></li>
+
+    <li {{ ($page == "laboratories")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-manage-laboratories') }}">
+        <i class="material-icons left">sensor_door</i>Laboratorium
     </a></li>
         
     <li><div class="divider"></div></li>
     
     <li><a class="subheader">Akun</a></li>
 
-    <li {{ ($page == "pw-change")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-pwedit') }}">
+    <li {{ ($page == "pw-change")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-change-account-info') }}">
         <i class="material-icons left">settings</i>Pengaturan Akun
     </a></li>
         
-    <li {{ ($page == "info-change")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-pwedit') }}">
+    <li {{ ($page == "info-change")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-change-account-password') }}">
         <i class="material-icons left">lock</i>Ubah Kata Sandi
     </a></li>
         
     <li><a class="waves-effect" href="{{ route('logout') }}">
         <i class="material-icons left">exit_to_app</i>Keluar
     </a></li>
+
+    <li style="height: 80px;"></li>
 </ul>
