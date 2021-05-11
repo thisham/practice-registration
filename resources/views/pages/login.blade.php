@@ -16,7 +16,7 @@
     <div class="container center">
         <div class="card">
             <div class="card-action center">
-                <img src="{{ asset('img/logo-apmfi.png') }}" alt="Logo APMFI" style="max-height: 75px;">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="max-height: 75px;">
             </div>
 
             <div class="card-content">
