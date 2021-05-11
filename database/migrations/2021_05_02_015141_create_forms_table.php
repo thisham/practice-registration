@@ -21,7 +21,6 @@ class CreateFormsTable extends Migration
             $table->integer('practicians');
             $table->string('lecturer');
             $table->string('subject');
-            $table->enum('status', ['Accepted', 'Rejected', 'Cancelled', 'Started', 'Done'])->nullable();
             $table->date('practice_date');
             $table->time('practice_start_time');
             $table->timestamps();
