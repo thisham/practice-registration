@@ -6,7 +6,9 @@
                     <i class="material-icons">menu</i>
                 </a>
 
-                <a href="#" class="brand-logo center black-text">UPT Laboratorium Pusat</a>	
+                <a href="#" class="brand-logo center black-text">
+                    <img src="{{ asset('img/logo.png') }}" alt="Mitseda" height="60">
+                </a>	
             </div>
         </div>
     </div>
