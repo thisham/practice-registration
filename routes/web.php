@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaboratoryCtrl;
 use App\Http\Controllers\NewFormCtrl;
 use App\Http\Controllers\PracticeCheckCtrl;
 use App\Http\Controllers\PracticeHistoryCtrl;
@@ -75,16 +76,20 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('riwayat-praktikum/{id}', [PracticeHistoryCtrl::class, 'show'])->name('admin-practice-history');
     Route::get('riwayat-praktikum/{id}/print', [PracticeHistoryCtrl::class, 'print'])->name('admin-practice-history-print');
 
-    Route::get('laboratorium', [ToolsClassificationCtrl::class, 'index'])->name('admin-manage-laboratories');
-    Route::get('laboratorium/tambah', [ToolsClassificationCtrl::class, 'create'])->name('admin-add-laboratory');
-    Route::get('laboratorium/{id}', [ToolsClassificationCtrl::class, 'show'])->name('admin-show-laboratory');
-    Route::get('laboratorium/{id}/edit', [ToolsClassificationCtrl::class, 'edit'])->name('admin-edit-laboratory');
-    Route::get('laboratorium/{id}/hapus', [ToolsClassificationCtrl::class, 'destroy'])->name('admin-delete-laboratory');
+    Route::get('laboratorium', [LaboratoryCtrl::class, 'index'])->name('admin-manage-laboratories');
+    Route::get('laboratorium/tambah', [LaboratoryCtrl::class, 'create'])->name('admin-add-laboratory');
+    Route::post('laboratorium/tambah', [LaboratoryCtrl::class, 'store'])->name('admin-add-laboratory');
+    Route::get('laboratorium/{id}', [LaboratoryCtrl::class, 'show'])->name('admin-show-laboratory');
+    Route::get('laboratorium/{id}/edit', [LaboratoryCtrl::class, 'edit'])->name('admin-edit-laboratory');
+    Route::post('laboratorium/{id}/edit', [LaboratoryCtrl::class, 'update'])->name('admin-edit-laboratory');
+    Route::get('laboratorium/{id}/hapus', [LaboratoryCtrl::class, 'destroy'])->name('admin-delete-laboratory');
 
     Route::get('alat', [ToolsClassificationCtrl::class, 'index'])->name('admin-manage-tools');
     Route::get('alat/tambah', [ToolsClassificationCtrl::class, 'create'])->name('admin-add-tool');
+    Route::post('alat/tambah', [ToolsClassificationCtrl::class, 'store'])->name('admin-add-tool');
     Route::get('alat/{id}', [ToolsClassificationCtrl::class, 'show'])->name('admin-show-tool');
     Route::get('alat/{id}/edit', [ToolsClassificationCtrl::class, 'edit'])->name('admin-edit-tool');
+    Route::post('alat/{id}/edit', [ToolsClassificationCtrl::class, 'update'])->name('admin-edit-tool');
     Route::get('alat/{id}/hapus', [ToolsClassificationCtrl::class, 'destroy'])->name('admin-delete-tool');
     
     Route::prefix('akun')->group(function () {
