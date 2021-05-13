@@ -35,15 +35,15 @@
     <li><a class="subheader">Praktikum</a></li>
 
     <li {{ ($page == "new-practices")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-new-practices') }}">
-        <i class="material-icons left">group</i>Form Baru
+        <i class="material-icons left">new_releases</i>Form Baru
     </a></li>
 
     <li {{ ($page == "practice-plans")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-plans') }}">
-        <i class="material-icons left">description</i>Rencana Praktikum
+        <i class="material-icons left">next_plan</i>Rencana Praktikum
     </a></li>
 
     <li {{ ($page == "practice-histories")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-histories') }}">
-        <i class="material-icons left">description</i>Riwayat Praktikum
+        <i class="material-icons left">history</i>Riwayat Praktikum
     </a></li>
 
     <li><div class="divider"></div></li>
