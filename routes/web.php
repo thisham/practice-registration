@@ -7,7 +7,7 @@ use App\Http\Controllers\PracticeHistoryCtrl;
 use App\Http\Controllers\PracticePlansCtrl;
 use App\Http\Controllers\PracticeRegistrationCtrl;
 use App\Http\Controllers\SessionCtrl;
-use App\Http\Controllers\ToolsClassificationCtrl;
+use App\Http\Controllers\ToolClassificationCtrl;
 use App\Http\Controllers\UserCtrl;
 use Illuminate\Support\Facades\Route;
 
@@ -84,17 +84,19 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('laboratorium/{id}/edit', [LaboratoryCtrl::class, 'update'])->name('admin-edit-laboratory');
     Route::get('laboratorium/{id}/hapus', [LaboratoryCtrl::class, 'destroy'])->name('admin-delete-laboratory');
 
-    Route::get('alat', [ToolsClassificationCtrl::class, 'index'])->name('admin-manage-tools');
-    Route::get('alat/tambah', [ToolsClassificationCtrl::class, 'create'])->name('admin-add-tool');
-    Route::post('alat/tambah', [ToolsClassificationCtrl::class, 'store'])->name('admin-add-tool');
-    Route::get('alat/{id}', [ToolsClassificationCtrl::class, 'show'])->name('admin-show-tool');
-    Route::get('alat/{id}/edit', [ToolsClassificationCtrl::class, 'edit'])->name('admin-edit-tool');
-    Route::post('alat/{id}/edit', [ToolsClassificationCtrl::class, 'update'])->name('admin-edit-tool');
-    Route::get('alat/{id}/hapus', [ToolsClassificationCtrl::class, 'destroy'])->name('admin-delete-tool');
+    Route::get('alat', [ToolClassificationCtrl::class, 'index'])->name('admin-manage-tools');
+    Route::get('alat/tambah', [ToolClassificationCtrl::class, 'create'])->name('admin-add-tool');
+    Route::post('alat/tambah', [ToolClassificationCtrl::class, 'store'])->name('admin-add-tool');
+    Route::get('alat/{id}', [ToolClassificationCtrl::class, 'show'])->name('admin-show-tool');
+    Route::get('alat/{id}/edit', [ToolClassificationCtrl::class, 'edit'])->name('admin-edit-tool');
+    Route::post('alat/{id}/edit', [ToolClassificationCtrl::class, 'update'])->name('admin-edit-tool');
+    Route::get('alat/{id}/hapus', [ToolClassificationCtrl::class, 'destroy'])->name('admin-delete-tool');
     
     Route::prefix('akun')->group(function () {
         Route::get('/', [UserCtrl::class, 'index'])->name('admin-account-info');
         Route::get('pw-change', [UserCtrl::class, 'passwordEdit'])->name('admin-change-account-password');
+        Route::post('pw-change', [UserCtrl::class, 'passwordUpdate'])->name('admin-change-account-password');
         Route::get('info-change', [UserCtrl::class, 'infoEdit'])->name('admin-change-account-info');
+        Route::post('info-change', [UserCtrl::class, 'infoUpdate'])->name('admin-change-account-info');
     });
 });
