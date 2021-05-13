@@ -16,7 +16,7 @@ class CreateToolClassificationsTable extends Migration
         Schema::create('tool_classifications', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('size');
+            $table->string('size')->nullable();
             $table->enum('class', ['A', 'B', 'C']);
             $table->integer('amount');
             $table->timestamps();
