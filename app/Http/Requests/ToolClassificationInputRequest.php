@@ -24,7 +24,10 @@ class ToolClassificationInputRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'size' => '',
+            'class' => 'required',
+            'amount' => 'required'
         ];
     }
 }
