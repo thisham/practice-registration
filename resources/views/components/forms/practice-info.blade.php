@@ -5,7 +5,7 @@
         </h3>
     </div>
 
-    <div class="card-action">
+    <div class="card-content">
         @if ($practice->type == 'KTI')
             <div class="input-field">
                 <input type="text" name="theme" id="theme" required />

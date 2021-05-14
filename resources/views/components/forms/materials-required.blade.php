@@ -5,7 +5,7 @@
         </h3>
     </div>
 
-    <div class="card-action">
+    <div class="card-content">
         <b>Disclaimer: Harap hapus bagian ini jika tidak diperlukan.</b>
         <div id="material_table">
             <div class="row" id="material_row_0">

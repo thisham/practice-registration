@@ -5,7 +5,7 @@
         </h3>
     </div>
 
-    <div class="card-action">
+    <div class="card-content">
         <div class="input-field">
             <input type="number" name="practicians" id="practicians" class="validate" required />
             <label for="practicians">Jumlah Peserta Praktikum</label>

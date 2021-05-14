@@ -5,7 +5,7 @@
         </h3>
     </div>
 
-    <div class="card-action">
+    <div class="card-content">
         <b>Disclaimer: Jika akan melakukan praktikum seorang diri (tanpa anggota lain), Anda tidak wajib mengisi bagian ini. Harap hapus bagian ini jika Anda akan melakukan praktikum seorang diri.</b>
         <span>Gunakan Nomor Induk Mahasiswa jika Anda adalah seorang mahasiswa (baik dari dalam kampus maupun luar kampus).</span>
 

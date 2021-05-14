@@ -5,7 +5,7 @@
         </h3>
     </div>
 
-    <div class="card-action">
+    <div class="card-content">
         <b>Disclaimer: Bagian ini wajib diisi walaupun Anda akan melakukan praktikum seorang diri.</b>
 
         <div class="input-field">
