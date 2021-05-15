@@ -48,9 +48,9 @@
                     <div class="input-field" id="laboratory-field" style="margin-top: 30px;">
                         <select name="laboratory" id="laboratory" required>
                             <option value="" id="laboratory-default" disabled selected>Pilih Laboratorium</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            @foreach ($laboratories as $laboratory)
+                                <option value="{{ $laboratory->id }}">{{ $laboratory->name }}</option>
+                            @endforeach
                         </select>
                         <label for="laboratory">Laboratorium</label>
                     </div>

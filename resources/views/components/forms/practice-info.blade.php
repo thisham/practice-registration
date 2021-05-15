@@ -24,8 +24,22 @@
         </div>
 
         <div class="input-field">
-            <input type="text" name="laboratory" id="laboratory" value="{{ $practice->laboratory }}" readonly required />
+            <select name="laboratory" id="laboratory" disabled required>
+                <option value="" id="laboratory-default" disabled>Pilih Laboratorium</option>
+                @foreach ($laboratories as $laboratory)
+                    <option 
+                        value="{{ $laboratory->id }}" 
+                        @if ($practice->laboratory === $laboratory->id)
+                            selected
+                        @endif
+                    >{{ $laboratory->name }}</option>
+                @endforeach
+            </select>
             <label for="laboratory">Laboratorium</label>
+        </div>
+
+        <div class="input-field">
+            <input type="hidden" name="laboratory" id="laboratory-input" value="{{ $practice->laboratory }}">
         </div>
 
         <div class="input-field">
