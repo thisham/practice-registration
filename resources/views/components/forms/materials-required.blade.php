@@ -9,17 +9,17 @@
         <b>Disclaimer: Harap hapus bagian ini jika tidak diperlukan.</b>
         <div id="material_table">
             <div class="row" id="material_row_0">
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="material_name[0]" id="material_name_0" required />
                     <label for="material_name">Nama Bahan</label>
                 </div>
         
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="material_quantity[0]" id="material_quantity_0" />
                     <label for="material_quantity">Banyaknya</label>
                 </div>
         
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="material_status[0]" id="material_status_0" />
                     <label for="material_status">Status</label>
                 </div>

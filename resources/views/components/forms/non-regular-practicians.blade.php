@@ -11,17 +11,17 @@
 
         <div id="practician_member_table">
             <div class="row" id="practician_member_row_0">
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="practician_member_name[0]" id="practician_member_name_0" required />
                     <label for="practician_member_name">Nama Praktikan</label>
                 </div>
         
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="practician_member_id_number[0]" id="practician_member_id_number_0" required />
                     <label for="practician_member_id_number">NIM / NIK</label>
                 </div>
         
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="tel" name="practician_member_phone[0]" id="practician_member_phone_0" required />
                     <label for="practician_member_phone">Nomor HP</label>
                 </div>
