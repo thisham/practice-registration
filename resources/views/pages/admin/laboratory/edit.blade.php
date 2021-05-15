@@ -53,7 +53,21 @@
                         @enderror
                     </div>
 
-                    <div class="center" style="margin-bottom: 20px;">
+                    <div class="input-field">
+                        <label>
+                            <input 
+                                type="checkbox" 
+                                name="is_active" 
+                                id="is_active" 
+                                @if ($laboratory->is_active)
+                                    checked
+                                @endif
+                            />
+                            <span class="black-text">Laboratorium Beroperasi</span>
+                        </label>
+                    </div>
+
+                    <div class="center" style="margin-bottom: 20px; margin-top: 80px;">
                         <button type="submit" id="submit" class="btn btn-large indigo waves-effect waves-light">
                             <i class="material-icons left">update</i> Perbarui Data Laboratorium
                         </button>

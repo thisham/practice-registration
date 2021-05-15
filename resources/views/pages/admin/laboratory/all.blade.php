@@ -44,6 +44,7 @@
                     <tr>
                         <th class="center">No.</th>
                         <th class="center">Nama</th>
+                        <th class="center">Status</th>
                         <th class="center">Aksi</th>
                     </tr>
 
@@ -52,6 +53,13 @@
                             <tr>
                                 <td class="center">{{ $no++ }}</td>
                                 <td>{{ $laboratory->name }}</td>
+                                <td class="center">
+                                    @if ($laboratory->is_active)
+                                        <span class="material-icons left green-text">check</span> Beroperasi
+                                    @else
+                                        <span class="material-icons left red-text">close</span> Tidak Beroperasi
+                                    @endif
+                                </td>
                                 <td class="center">
                                     <a href="{{ route('admin-show-laboratory', ['id' => $laboratory->id]) }}" class="btn btn-small indigo waves-effect waves-light">
                                         <i class="material-icons">info</i>

@@ -28,6 +28,7 @@ class LaboratoryCtrl extends Controller
         $laboratory = new Laboratory();
         $laboratory->name = $data->name;
         $laboratory->location = $data->location;
+        $laboratory->is_active = isset($data->is_active);
         $isSaved = $laboratory->save();
 
         if ($isSaved) {
@@ -63,6 +64,7 @@ class LaboratoryCtrl extends Controller
         $laboratory = Laboratory::find($id);
         $laboratory->name = $data->name;
         $laboratory->location = $data->location;
+        $laboratory->is_active = isset($data->is_active);
         $isSaved = $laboratory->save();
 
         if ($isSaved) {

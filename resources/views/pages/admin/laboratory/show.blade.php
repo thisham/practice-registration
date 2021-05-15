@@ -27,9 +27,21 @@
                         <th>Nama Laboratorium</th>
                         <td>{{ $laboratory->name }}</td>
                     </tr>
+
                     <tr>
                         <th>Lokasi Laboratorium</th>
                         <td>{{ $laboratory->location }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Status Laboratorium</th>
+                        <td>
+                            @if ($laboratory->is_active)
+                                <span class="material-icons left green-text">check</span> Beroperasi
+                            @else
+                                <span class="material-icons left red-text">close</span> Tidak Beroperasi
+                            @endif
+                        </td>
                     </tr>
                 </table>
 

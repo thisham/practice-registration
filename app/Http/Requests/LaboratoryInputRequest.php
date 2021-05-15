@@ -25,7 +25,8 @@ class LaboratoryInputRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'location' => 'required'
+            'location' => 'required',
+            'is_active' => ''
         ];
     }
 }
