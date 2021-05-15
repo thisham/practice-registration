@@ -9,17 +9,17 @@
         <b>Disclaimer: Harap hapus bagian ini jika tidak diperlukan.</b>
         <div id="tool_table">
             <div class="row" id="tool_row_0">
-                <div class="input-field col">
-                    <input type="text" name="tool_name[0]" id="tool_name_0" required />
+                <div class="input-field col l8 m8 s12">
+                    <select name="tool_name[0]" id="tool_name_0" required>
+                        <option value="" disabled selected>Pilih Alat</option>
+                        @foreach ($tools as $tool)
+                            <option value="{{ $tool->id }}">{{ $tool->name }} {{ $tool->size }}</option>
+                        @endforeach
+                    </select>
                     <label for="name">Nama Alat</label>
                 </div>
         
-                <div class="input-field col">
-                    <input type="text" name="tool_size[0]" id="tool_size_0" />
-                    <label for="size">Ukuran</label>
-                </div>
-        
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="number" name="tool_quantity[0]" id="tool_quantity_0" required />
                     <label for="quantity">Jumlah</label>
                 </div>
@@ -44,17 +44,19 @@
             e.preventDefault();
             let newElem = document.createElement('div');
             let pastElem = document.getElementById('tool_row_' + (counter - 1));
+            let toolOptions = "";
+            let toolData = {!! $tools !!};
+            toolData.forEach(element => {
+                toolOptions += "<option value='" + element.id +"'>" + element.name + " " + element.size + "</option>"
+            });
             newElem.setAttribute('id', 'tool_row_' + counter);
             newElem.classList.add('row');
             newElem.innerHTML = `
                 <div class="input-field col">
-                    <input type="text" name="tool_name[` + counter + `]" id="tool_name_` + counter + `" required />
+                    <select name="tool_name[` + counter + `]" id="tool_name_` + counter + `" required>
+                        <option value="" disabled selected>Pilih Alat</option> ` + toolOptions + `
+                    </select>
                     <label for="name">Nama Alat</label>
-                </div>
-        
-                <div class="input-field col">
-                    <input type="text" name="tool_size[` + counter + `]" id="tool_size_` + counter + `" />
-                    <label for="size">Ukuran</label>
                 </div>
         
                 <div class="input-field col">
@@ -67,6 +69,8 @@
             
             if (pastElem != null)
                 pastElem.parentNode.insertBefore(newElem, pastElem.nextSibling);
+            
+            M.FormSelect.init(document.getElementById('tool_name_' + counter));
             counter += 1;
         });
 
