@@ -49,17 +49,17 @@
             newElem.setAttribute('id', 'practician_member_row_' + counter);
             newElem.classList.add('row');
             newElem.innerHTML = `
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="practician_member_name[` + counter + `]" id="practician_member_name_` + counter + `" />
                     <label for="practician_member_name">Nama Praktikan</label>
                 </div>
             
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="practician_member_id_number[` + counter + `]" id="practician_member_id_number_` + counter + `" />
                     <label for="practician_member_id_number">NIM / NIK</label>
                 </div>
         
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="tel" name="practician_member_phone[` + counter + `]" id="practician_member_phone_` + counter + `" />
                     <label for="practician_member_phone">Nomor HP</label>
                 </div>

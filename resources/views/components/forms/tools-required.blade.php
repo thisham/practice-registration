@@ -52,14 +52,14 @@
             newElem.setAttribute('id', 'tool_row_' + counter);
             newElem.classList.add('row');
             newElem.innerHTML = `
-                <div class="input-field col">
+                <div class="input-field col l8 m8 s12">
                     <select name="tool_name[` + counter + `]" id="tool_name_` + counter + `" required>
                         <option value="" disabled selected>Pilih Alat</option> ` + toolOptions + `
                     </select>
                     <label for="name">Nama Alat</label>
                 </div>
         
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="number" name="tool_quantity[` + counter + `]" id="tool_quantity_` + counter + `" required />
                     <label for="quantity">Jumlah</label>
                 </div>

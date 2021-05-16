@@ -47,17 +47,17 @@
             newElem.setAttribute('id', 'material_row_' + counter);
             newElem.classList.add('row');
             newElem.innerHTML = `
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="material_name[` + counter + `]" id="material_name_` + counter + `" required />
                     <label for="material_name">Nama Bahan</label>
                 </div>
         
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="material_quantity[` + counter + `]" id="material_quantity_` + counter + `" />
                     <label for="material_quantity">Banyaknya</label>
                 </div>
         
-                <div class="input-field col">
+                <div class="input-field col l4 m4 s12">
                     <input type="text" name="material_status[` + counter + `]" id="material_status_` + counter + `" />
                     <label for="material_status">Status</label>
                 </div>
