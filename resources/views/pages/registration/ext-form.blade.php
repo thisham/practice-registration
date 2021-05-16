@@ -12,7 +12,7 @@
 
 @section('main')
     <div class="container" style="margin-top: 40px;">
-        <form action="{{ route('register-fill-ext-practice-data') }}" method="post">
+        <form action="{{ route('register-fill-practice-data') }}" method="post">
             @csrf
 
             @include('components.forms.practice-info', ['practice' => $practice])

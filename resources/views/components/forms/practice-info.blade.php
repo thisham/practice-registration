@@ -14,11 +14,6 @@
         @endif
 
         <div class="input-field">
-            <input type="text" name="type" id="type" value="{{ $practice->type }}" readonly required />
-            <label for="type">Tipe Praktikum</label>
-        </div>
-
-        <div class="input-field">
             <input type="text" name="lecturer" id="lecturer" required />
             <label for="lecturer">Dosen Pengampu / Pembimbing</label>
         </div>
@@ -38,8 +33,24 @@
             <label for="laboratory">Laboratorium</label>
         </div>
 
+        <div class="input-field" id="course-field" style="margin-top: 30px;">
+            <select name="course" id="course" disabled required>
+                <option value="" id="course-default" disabled selected>Pilih Mata Kuliah Praktikum</option>
+                @foreach ($courses as $course)
+                    <option 
+                        value="{{ $course->id }}"
+                        @if ($practice->course === $course->id)
+                            selected
+                        @endif
+                    >{{ $course->code }} - {{ $course->name }}</option>
+                @endforeach
+            </select>
+            <label for="course">Mata Kuliah Praktikum</label>
+        </div>
+
         <div class="input-field">
             <input type="hidden" name="laboratory" id="laboratory-input" value="{{ $practice->laboratory }}">
+            <input type="hidden" name="course" id="course-input" value="{{ $practice->course }}">
         </div>
 
         <div class="input-field">

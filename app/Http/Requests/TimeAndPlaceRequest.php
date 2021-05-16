@@ -27,7 +27,7 @@ class TimeAndPlaceRequest extends FormRequest
             'date' => 'required|date|after:today',
             'time' => 'required',
             'laboratory' => 'required',
-            'type' => 'required'
+            'course' => 'required'
         ];
     }
 }

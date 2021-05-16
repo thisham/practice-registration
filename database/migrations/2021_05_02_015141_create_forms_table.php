@@ -17,10 +17,11 @@ class CreateFormsTable extends Migration
             $table->id();
             $table->enum('type', ['KTI', 'EXT', 'REG']);
             $table->foreignId('laboratory_id')->constrained();
+            $table->foreignId('course_id')->constrained();
             $table->string('theme')->nullable();
+            $table->string('institution');
             $table->integer('practicians');
             $table->string('lecturer');
-            $table->string('subject');
             $table->boolean('is_reportable');
             $table->date('practice_date');
             $table->time('practice_start_time');

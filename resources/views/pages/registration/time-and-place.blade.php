@@ -55,14 +55,14 @@
                         <label for="laboratory">Laboratorium</label>
                     </div>
 
-                    <div class="input-field" id="type-field" style="margin-top: 30px;">
-                        <select name="type" id="type" required>
-                            <option value="" id="type-default" disabled selected>Pilih Jenis Praktikum</option>
-                            <option value="KTI">Karya Tulis Ilmiah</option>
-                            <option value="REG">Reguler</option>
-                            <option value="EXT">Praktikum Luar Kampus</option>
+                    <div class="input-field" id="course-field" style="margin-top: 30px;">
+                        <select name="course" id="course" required>
+                            <option value="" id="course-default" disabled selected>Pilih Mata Kuliah Praktikum</option>
+                            @foreach ($courses as $course)
+                                <option value="{{ $course->id }}">{{ $course->code }} - {{ $course->name }}</option>
+                            @endforeach
                         </select>
-                        <label for="type">Jenis Praktikum</label>
+                        <label for="course">Mata Kuliah Praktikum</label>
                     </div>
 
                     <div class="input-field center">
