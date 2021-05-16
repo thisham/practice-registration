@@ -57,6 +57,10 @@
     <li {{ ($page == "laboratories")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-manage-laboratories') }}">
         <i class="material-icons left">sensor_door</i>Laboratorium
     </a></li>
+
+    <li {{ ($page == "courses")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-manage-courses') }}">
+        <i class="material-icons left">book</i>Mata Kuliah
+    </a></li>
         
     <li><div class="divider"></div></li>
     
