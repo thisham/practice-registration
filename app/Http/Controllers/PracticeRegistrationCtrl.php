@@ -110,7 +110,7 @@ class PracticeRegistrationCtrl extends Controller
         $form->type = $course->type;
         $form->laboratory_id = $request->laboratory;
         $form->course_id = $request->course;
-        $form->institution = 'Akademi Farmasi Mitra Sehat Mandiri Sidoarjo';
+        $form->institution = $request->institution ?? 'Akademi Farmasi Mitra Sehat Mandiri Sidoarjo';
         $form->theme = $request->theme ?? NULL;
         $form->practicians = $practicians;
         $form->lecturer = $request->lecturer;
@@ -171,8 +171,25 @@ class PracticeRegistrationCtrl extends Controller
             ->with('msgfailed', 'Form tidak tersimpan. Mohon ulangi lagi atau hubungi petugas.');
     }
 
-    public function practiceTicket(Request $request, $id)
+    public function practiceTicket($id)
     {
-        # code...
+        $id = explode('-', $id);
+        $form = Form::where('id', $id[1])->with(['laboratory', 'course'])->first();
+
+        if (!$form) 
+            return redirect()->route('register-set-time-and-place')
+                ->with('msgfailed', 'Form tidak ditemukan. Harap melakukan pengajuan terlebih dahulu.');
+
+        $data = [
+            'form' => $form,
+            'leader' => Practician::where([['form_id', $id[1]], ['email', '!=', NULL]])->first(),
+            'members' => Practician::where([['form_id', $id[1]], ['email', '=', NULL]])->get(),
+            'materials' => Material::where('form_id', $id[1])->get(),
+            'tools' => Tool::where('form_id', $id[1])->get(),
+            'laboratory' => $form->laboratory()->first(),
+            'course' => $form->course()->first()
+        ];
+
+        return view('pages.registration.summary', $data);
     }
 }

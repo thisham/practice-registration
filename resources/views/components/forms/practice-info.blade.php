@@ -13,6 +13,13 @@
             </div>
         @endif
 
+        @if ($cs->type == 'EXT')
+            <div class="input-field">
+                <input type="text" name="institution" id="institution" required />
+                <label for="institution">Asal Institusi</label>
+            </div>
+        @endif
+
         <div class="input-field">
             <input type="text" name="lecturer" id="lecturer" required />
             <label for="lecturer">Dosen Pengampu / Pembimbing</label>
