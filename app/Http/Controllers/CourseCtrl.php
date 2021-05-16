@@ -11,7 +11,7 @@ class CourseCtrl extends Controller
     public function index()
     {
         $data = [
-            'course' => Course::all(['id', 'code' ,'name', 'is_active'])
+            'courses' => Course::all(['id', 'code' ,'name', 'is_active'])
         ];
 
         return view('pages.admin.courses.all', $data);

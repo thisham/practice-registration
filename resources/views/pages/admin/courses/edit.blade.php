@@ -34,7 +34,7 @@
             </div>
 
             <div class="card-content">
-                <form action="{{ route('admin-edit-course') }}" method="post">
+                <form action="{{ route('admin-edit-course', ['id' => $course->id]) }}" method="post">
                     @csrf
 
                     <div class="input-field">
@@ -87,14 +87,21 @@
 
                     <div class="input-field">
                         <label>
-                            <input type="checkbox" name="is_active" id="is_active" />
+                            <input 
+                                type="checkbox" 
+                                name="is_active" 
+                                id="is_active" 
+                                @if ($course->is_active)
+                                    checked
+                                @endif
+                            />
                             <span class="black-text">Mata Kuliah Aktif</span>
                         </label>
                     </div>
 
                     <div class="center" style="margin-bottom: 20px; margin-top: 80px;">
                         <button type="submit" id="submit" class="btn btn-large indigo waves-effect waves-light">
-                            <i class="material-icons left">add</i> Tambah Mata Kuliah
+                            <i class="material-icons left">add</i> Perbarui Mata Kuliah
                         </button>
                     </div>
                 </form>

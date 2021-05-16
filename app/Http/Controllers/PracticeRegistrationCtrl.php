@@ -24,7 +24,7 @@ class PracticeRegistrationCtrl extends Controller
     {
         $data = [
             'laboratories' => Laboratory::where('is_active', 1)->select('id', 'name')->get(),
-            'courses' => Course::where('is_active', 1)->select('id', 'code', 'name', 'type')
+            'courses' => Course::where('is_active', 1)->select('id', 'code', 'name', 'type')->get()
         ];
 
         return view('pages.registration.time-and-place', $data);
@@ -57,6 +57,7 @@ class PracticeRegistrationCtrl extends Controller
         $data = [
             'laboratories' => Laboratory::where('is_active', 1)->select('id', 'name')->get(),
             'courses' => Course::all(['id', 'code', 'name', 'type', 'curriculum']),
+            'cs' => Course::find(Session::get('practice')->course),
             'tools' => ToolClassification::all(['id', 'name', 'size', 'amount']),
             'practice' => (object) Session::get('practice'),
         ];
@@ -73,6 +74,7 @@ class PracticeRegistrationCtrl extends Controller
         $data = [
             'laboratories' => Laboratory::where('is_active', 1)->select('id', 'name')->get(),
             'courses' => Course::all(['id', 'code', 'name', 'type', 'curriculum']),
+            'cs' => Course::find(Session::get('practice')->course),
             'tools' => ToolClassification::all(['id', 'name', 'size', 'amount']),
             'practice' => (object) Session::get('practice'),
         ];
@@ -89,6 +91,7 @@ class PracticeRegistrationCtrl extends Controller
         $data = [
             'laboratories' => Laboratory::where('is_active', 1)->select('id', 'name')->get(),
             'courses' => Course::all(['id', 'code', 'name', 'type', 'curriculum']),
+            'cs' => Course::find(Session::get('practice')->course),
             'tools' => ToolClassification::all(['id', 'name', 'size', 'amount']),
             'practice' => (object) Session::get('practice'),
         ];
@@ -107,12 +110,13 @@ class PracticeRegistrationCtrl extends Controller
         $form->type = $course->type;
         $form->laboratory_id = $request->laboratory;
         $form->course_id = $request->course;
+        $form->institution = 'Akademi Farmasi Mitra Sehat Mandiri Sidoarjo';
         $form->theme = $request->theme ?? NULL;
         $form->practicians = $practicians;
         $form->lecturer = $request->lecturer;
         $form->is_reportable = false;
         $form->practice_date = $request->date;
-        $form->practice_time = $request->time;
+        $form->practice_start_time = $request->time;
         $isFormSaved = $form->save();
         
         $practician = new Practician();
@@ -123,12 +127,12 @@ class PracticeRegistrationCtrl extends Controller
         $practician->form_id = $form->id;
         $practician->save();
         
-        if ($practicians > 1) {
+        if ($practicians > 1 && $course->type != 'REG') {
             for ($i = 0; $i < $practicians - 1; $i++) {
                 $practician = new Practician();
-                $practician->practician_member_name[$i] = $request->name;
-                $practician->practician_member_id_number[$i] = $request->id_number;
-                $practician->practician_member_phone[$i] = $request->phone;
+                $practician->name = $request->practician_member_name[$i];
+                $practician->id_number = $request->practician_member_id_number[$i];
+                $practician->phone = $request->practician_member_phone[$i];
                 $practician->form_id = $form->id;
                 $practician->save();
             }
@@ -138,6 +142,7 @@ class PracticeRegistrationCtrl extends Controller
             for ($i = 0; $i < count($request->tool_name); $i++) {
                 $tool_data = ToolClassification::find($request->tool_name[$i]);
                 $tool = new Tool();
+                $tool->form_id = $form->id;
                 $tool->name = $tool_data->name;
                 $tool->size = $tool_data->size;
                 $tool->class = $tool_data->class;
@@ -149,6 +154,7 @@ class PracticeRegistrationCtrl extends Controller
         if (isset($request->material_name)) {
             for ($i = 0; $i < count($request->material_name); $i++) {
                 $material = new Material();
+                $material->form_id = $form->id;
                 $material->name = $request->material_name[$i];
                 $material->quantity = $request->material_quantity[$i];
                 $material->status = $request->material_status[$i];
@@ -165,7 +171,7 @@ class PracticeRegistrationCtrl extends Controller
             ->with('msgfailed', 'Form tidak tersimpan. Mohon ulangi lagi atau hubungi petugas.');
     }
 
-    public function practiceTicket(Request $request)
+    public function practiceTicket(Request $request, $id)
     {
         # code...
     }
