@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseCtrl;
 use App\Http\Controllers\LaboratoryCtrl;
 use App\Http\Controllers\NewFormCtrl;
 use App\Http\Controllers\PracticeCheckCtrl;
@@ -91,6 +92,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('alat/{id}/edit', [ToolClassificationCtrl::class, 'edit'])->name('admin-edit-tool');
     Route::post('alat/{id}/edit', [ToolClassificationCtrl::class, 'update'])->name('admin-edit-tool');
     Route::get('alat/{id}/hapus', [ToolClassificationCtrl::class, 'destroy'])->name('admin-delete-tool');
+
+    Route::get('mata-kuliah', [CourseCtrl::class, 'index'])->name('admin-manage-courses');
+    Route::get('mata-kuliah/tambah', [CourseCtrl::class, 'create'])->name('admin-add-course');
+    Route::post('mata-kuliah/tambah', [CourseCtrl::class, 'store'])->name('admin-add-course');
+    Route::get('mata-kuliah/{id}', [CourseCtrl::class, 'show'])->name('admin-show-course');
+    Route::get('mata-kuliah/{id}/edit', [CourseCtrl::class, 'edit'])->name('admin-edit-course');
+    Route::post('mata-kuliah/{id}/edit', [CourseCtrl::class, 'update'])->name('admin-edit-course');
+    Route::get('mata-kuliah/{id}/hapus', [CourseCtrl::class, 'destroy'])->name('admin-delete-course');
     
     Route::prefix('akun')->group(function () {
         Route::get('/', [UserCtrl::class, 'index'])->name('admin-account-info');
