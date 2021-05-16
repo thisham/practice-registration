@@ -15,7 +15,7 @@
         <form action="{{ route('register-fill-practice-data') }}" method="post">
             @csrf
 
-            @include('components.forms.practice-info', ['practice' => $practice])
+            @include('components.forms.practice-info', ['practice' => $practice, 'courses' => $courses, 'laboratories' => $laboratories])
 
             @include('components.forms.practician-leader')
 
