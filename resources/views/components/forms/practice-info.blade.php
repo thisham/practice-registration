@@ -6,7 +6,7 @@
     </div>
 
     <div class="card-content">
-        @if ($practice->type == 'KTI')
+        @if ($cs->type == 'KTI')
             <div class="input-field">
                 <input type="text" name="theme" id="theme" required />
                 <label for="theme">Judul Penelitian</label>
@@ -24,7 +24,7 @@
                 @foreach ($laboratories as $laboratory)
                     <option 
                         value="{{ $laboratory->id }}" 
-                        @if ($practice->laboratory === $laboratory->id)
+                        @if ($practice->laboratory == $laboratory->id)
                             selected
                         @endif
                     >{{ $laboratory->name }}</option>
@@ -33,13 +33,13 @@
             <label for="laboratory">Laboratorium</label>
         </div>
 
-        <div class="input-field" id="course-field" style="margin-top: 30px;">
+        <div class="input-field">
             <select name="course" id="course" disabled required>
                 <option value="" id="course-default" disabled selected>Pilih Mata Kuliah Praktikum</option>
                 @foreach ($courses as $course)
                     <option 
                         value="{{ $course->id }}"
-                        @if ($practice->course === $course->id)
+                        @if ($practice->course == $course->id)
                             selected
                         @endif
                     >{{ $course->code }} - {{ $course->name }}</option>
