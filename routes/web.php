@@ -43,8 +43,8 @@ Route::prefix('praktikum')->group(function () {
         Route::get('isi-data/kti', [PracticeRegistrationCtrl::class, 'fillKTIFormData'])->name('register-fill-kti-practice-data');
         Route::get('isi-data/ext', [PracticeRegistrationCtrl::class, 'fillEXTFormData'])->name('register-fill-ext-practice-data');
         Route::get('isi-data/reg', [PracticeRegistrationCtrl::class, 'fillREGFormData'])->name('register-fill-reg-practice-data');
-        Route::post('isi-data', [PracticeRegistrationCtrl::class, 'storeForm'])->name('register-fill-practice-data');
-        Route::get('tiket-praktikum', [PracticeRegistrationCtrl::class, 'practiceTicket'])->name('register-get-practice-ticket');
+        Route::post('kirim-form', [PracticeRegistrationCtrl::class, 'storeForm'])->name('register-fill-practice-data');
+        Route::get('tiket-praktikum/{id}', [PracticeRegistrationCtrl::class, 'practiceTicket'])->name('register-get-practice-ticket');
     });
 
     Route::prefix('cek')->group(function () {
