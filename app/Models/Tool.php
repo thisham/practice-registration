@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Tool extends Model
 {
     use HasFactory;
+
+    public function form()
+    {
+        return $this->belongsTo(Form::class);
+    }
 }

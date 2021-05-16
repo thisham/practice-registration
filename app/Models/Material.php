@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Material extends Model
 {
     use HasFactory;
+
+    public function form()
+    {
+        return $this->belongsTo(Form::class);
+    }
 }

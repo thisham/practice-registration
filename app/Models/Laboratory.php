@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Laboratory extends Model
 {
     use HasFactory;
+
+    public function form()
+    {
+        return $this->hasMany(Form::class);
+    }
 }
