@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TimeAndPlaceRequest;
 use App\Models\Course;
 use App\Models\Form;
+use App\Models\FormStatus;
 use App\Models\Laboratory;
 use App\Models\Material;
 use App\Models\Practician;
@@ -124,6 +125,7 @@ class PracticeRegistrationCtrl extends Controller
         $practician->id_number = $request->id_number;
         $practician->email = $request->email;
         $practician->phone = $request->phone;
+        $practician->type = 'leader';
         $practician->form_id = $form->id;
         $practician->save();
         
@@ -133,6 +135,7 @@ class PracticeRegistrationCtrl extends Controller
                 $practician->name = $request->practician_member_name[$i];
                 $practician->id_number = $request->practician_member_id_number[$i];
                 $practician->phone = $request->practician_member_phone[$i];
+                $practician->type = 'member';
                 $practician->form_id = $form->id;
                 $practician->save();
             }
@@ -162,6 +165,12 @@ class PracticeRegistrationCtrl extends Controller
             }
         }
 
+        $status = new FormStatus();
+        $status->form_id = $form->id;
+        $status->status = 'submitted';
+        $status->message = NULL;
+        $status->save();
+
         $form_id = sprintf('%s-%s', $form->type, $form->id);
 
         if ($isFormSaved)
@@ -182,8 +191,8 @@ class PracticeRegistrationCtrl extends Controller
 
         $data = [
             'form' => $form,
-            'leader' => Practician::where([['form_id', $id[1]], ['email', '!=', NULL]])->first(),
-            'members' => Practician::where([['form_id', $id[1]], ['email', '=', NULL]])->get(),
+            'leader' => Practician::where([['form_id', $id[1]], ['type', 'leader']])->first(),
+            'members' => Practician::where([['form_id', $id[1]], ['type', 'member']])->get(),
             'materials' => Material::where('form_id', $id[1])->get(),
             'tools' => Tool::where('form_id', $id[1])->get(),
             'laboratory' => $form->laboratory()->first(),
