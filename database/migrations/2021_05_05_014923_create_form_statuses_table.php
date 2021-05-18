@@ -16,7 +16,8 @@ class CreateFormStatusesTable extends Migration
         Schema::create('form_statuses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('form_id')->constrained();
-            $table->string('status');
+            $table->enum('status', ['submitted', 'accepted', 'rejected', 'cancelled', 'done']);
+            $table->string('message')->nullable();
             $table->timestamps();
         });
     }
