@@ -20,6 +20,7 @@ class CreatePracticiansTable extends Migration
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('phone');
+            $table->enum('type', ['leader', 'member']);
             $table->timestamps();
         });
     }
