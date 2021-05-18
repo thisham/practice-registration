@@ -49,8 +49,8 @@ Route::prefix('praktikum')->group(function () {
 
     Route::prefix('cek')->group(function () {
         Route::get('/', [PracticeCheckCtrl::class, 'index'])->name('check-registration');
-        Route::get('form/{id}', [PracticeCheckCtrl::class, 'show'])->name('check-registration-number');
-        Route::get('form/{id}/print', [PracticeCheckCtrl::class], 'print')->name('check-registration-number-print');
+        Route::get('form', [PracticeCheckCtrl::class, 'show'])->name('check-registration-number');
+        Route::get('form/{id}/print', [PracticeCheckCtrl::class, 'print'])->name('check-registration-number-print');
     });
 });
 
