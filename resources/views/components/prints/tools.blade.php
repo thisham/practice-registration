@@ -48,44 +48,44 @@
                 $no = 1;
             @endphp
 
-            <table>
-                <thead>
-                    <tr>
-                        <th class="pr-center" rowspan="2">No.</th>
-                        <th class="pr-center" rowspan="2">Nama Alat</th>
-                        <th class="pr-center" rowspan="2">No. Alat</th>
-                        <th class="pr-center" colspan="2">Pinjam</th>
-                        <th class="pr-center" colspan="2">Kembali</th>
-                        <th class="pr-center" rowspan="2">Keterangan</th>
-                    </tr>
+            @if ($form->type == 'REG')
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="pr-center" rowspan="2">No.</th>
+                            <th class="pr-center" rowspan="2">Nama Alat</th>
+                            <th class="pr-center" rowspan="2">QTY</th>
+                            <th class="pr-center" colspan="2">Pinjam</th>
+                            <th class="pr-center" colspan="2">Kembali</th>
+                            <th class="pr-center" rowspan="2">Keterangan</th>
+                        </tr>
 
-                    <tr>
-                        <th class="pr-center">MHS</th>
-                        <th class="pr-center">LAB</th>
-                        <th class="pr-center">MHS</th>
-                        <th class="pr-center">LAB</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    @foreach ($tools as $tool)
-                        @if ($tool->class == 'A')
-                            @for ($j = 0; $j < $tool->quantity; $j++)
-                                <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{ $tool->name }} {{ $tool->size }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            @endfor
-                        @else
+                        <tr>
+                            <th class="pr-center">MHS</th>
+                            <th class="pr-center">LAB</th>
+                            <th class="pr-center">MHS</th>
+                            <th class="pr-center">LAB</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        @foreach ($tools as $tool)
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $tool->name }} {{ $tool->size }}</td>
+                                <td>{{ $tool->quantity }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+                        
+                        @for ($i = $no; $i <= 55; $i++)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -93,23 +93,73 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                        @endif
-                    @endforeach
-                    
-                    @for ($i = $no; $i <= 55; $i++)
+                        @endfor
+                    </tbody>
+                </table>
+            @else
+                <table>
+                    <thead>
                         <tr>
-                            <td>{{ $no++ }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th class="pr-center" rowspan="2">No.</th>
+                            <th class="pr-center" rowspan="2">Nama Alat</th>
+                            <th class="pr-center" rowspan="2">No. Alat</th>
+                            <th class="pr-center" colspan="2">Pinjam</th>
+                            <th class="pr-center" colspan="2">Kembali</th>
+                            <th class="pr-center" rowspan="2">Keterangan</th>
                         </tr>
-                    @endfor
-                </tbody>
-            </table>
+
+                        <tr>
+                            <th class="pr-center">MHS</th>
+                            <th class="pr-center">LAB</th>
+                            <th class="pr-center">MHS</th>
+                            <th class="pr-center">LAB</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        @foreach ($tools as $tool)
+                            @if ($tool->class == 'A')
+                                @for ($j = 0; $j < $tool->quantity; $j++)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $tool->name }} {{ $tool->size }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                @endfor
+                            @else
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $tool->name }} {{ $tool->size }}</td>
+                                    <td>(x {{ $tool->quantity }})</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            @endif
+                        @endforeach
+                        
+                        @for ($i = $no; $i <= 55; $i++)
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endfor
+                    </tbody>
+                </table>
+            @endif
         </div>
     </div>
 </div>
