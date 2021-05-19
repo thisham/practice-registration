@@ -35,7 +35,7 @@
     <li><a class="subheader">Praktikum</a></li>
 
     <li {{ ($page == "new-practices")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-new-practices') }}">
-        <i class="material-icons left">new_releases</i>Form Baru
+        <i class="material-icons left">new_releases</i>Form Baru <span id="new-badge" class="new badge hide"></span>
     </a></li>
 
     <li {{ ($page == "practice-plans")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-plans') }}">
@@ -80,3 +80,31 @@
 
     <li style="height: 80px;"></li>
 </ul>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const newBadge = document.getElementById('new-badge');
+        let count = 0;
+
+        setInterval(function () {
+            fetch('{{ route("api-new-form-count") }}')
+            .then(response => response.json())
+            .then(function (data) {
+                if (count < data.length) {
+                    M.toast({html: data.length + ' Form Baru!'});
+                    count = data.length;
+                }
+
+                if (data.length === 0)
+                    if (!newBadge.classList.contains('hide'))
+                        newBadge.classList.add('hide');
+
+                if (count !== 0) {
+                    newBadge.innerHTML = count;
+                    if (newBadge.classList.contains('hide'))
+                        newBadge.classList.remove('hide');
+                }
+            });
+        }, 10000);
+    });
+</script>
