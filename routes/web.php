@@ -60,10 +60,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('logout', [SessionCtrl::class, 'destroy'])->name('logout');
 
     Route::get('form-baru', [NewFormCtrl::class, 'index'])->name('admin-new-practices');
-    Route::get('form-baru/{id}', [NewFormCtrl::class, 'show'])->name('admin-new-practice');
     Route::get('form-baru/{id}/print', [NewFormCtrl::class, 'print'])->name('admin-new-practice-print');
-    Route::get('form-baru/{id}/setujui', [NewFormCtrl::class, 'acc'])->name('admin-new-practice-acc');
-    Route::get('form-baru/{id}/tolak', [NewFormCtrl::class, 'reject'])->name('admin-new-practice-reject');
+    Route::get('form-baru/lihat', [NewFormCtrl::class, 'preview'])->name('admin-new-practice-preview');
 
     Route::get('rencana-praktikum', [PracticePlansCtrl::class, 'index'])->name('admin-practice-plans');
     Route::get('rencana-praktikum/{id}', [PracticePlansCtrl::class, 'show'])->name('admin-practice-plan');

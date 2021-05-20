@@ -86,7 +86,7 @@
         const newBadge = document.getElementById('new-badge');
         let count = 0;
 
-        setInterval(function () {
+        function getNotification() {
             fetch('{{ route("api-new-form-count") }}')
             .then(response => response.json())
             .then(function (data) {
@@ -99,12 +99,18 @@
                     if (!newBadge.classList.contains('hide'))
                         newBadge.classList.add('hide');
 
-                if (count !== 0) {
-                    newBadge.innerHTML = count;
+                if (data.length !== 0)
                     if (newBadge.classList.contains('hide'))
                         newBadge.classList.remove('hide');
-                }
+
+                newBadge.innerHTML = count;
             });
+        }
+
+        getNotification();
+
+        setInterval(function () {
+            getNotification();
         }, 10000);
     });
 </script>
