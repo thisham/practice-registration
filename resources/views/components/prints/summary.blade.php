@@ -20,16 +20,14 @@
             </thead>
             
             <tbody>
-                @if (count($tools) > 0)
-                    @foreach ($tools as $tool)
-                        <tr>
-                            <td class="pr-center">{{ $no++ }}</td>
-                            <td class="pr-center">{{ $tool->quantity }}</td>
-                            <td>{{ $tool->name }}</td>
-                            <td>{{ $tool->size }}</td>
-                        </tr>
-                    @endforeach
-                @endif
+                @foreach ($tools as $tool)
+                    <tr>
+                        <td class="pr-center">{{ $no++ }}</td>
+                        <td class="pr-center">{{ $tool->quantity }}</td>
+                        <td>{{ $tool->name }}</td>
+                        <td>{{ $tool->size }}</td>
+                    </tr>
+                @endforeach
 
                 @if ($no < 13)
                     @for ($i = $no; $i <= 13; $i++)
@@ -69,16 +67,14 @@
             </thead>
             
             <tbody>
-                @if (count($materials) > 0)
-                    @foreach ($materials as $material)
-                        <tr>
-                            <td class="pr-center">{{ $no++ }}</td>
-                            <td class="pr-center">{{ $material->quantity }}</td>
-                            <td>{{ $material->name }}</td>
-                            <td>{{ $material->status }}</td>
-                        </tr>
-                    @endforeach
-                @endif
+                @foreach ($materials as $material)
+                    <tr>
+                        <td class="pr-center">{{ $no++ }}</td>
+                        <td class="pr-center">{{ $material->quantity }}</td>
+                        <td>{{ $material->name }}</td>
+                        <td>{{ $material->status }}</td>
+                    </tr>
+                @endforeach
 
                 @if ($no < 13)
                     @for ($i = $no; $i <= 13; $i++)

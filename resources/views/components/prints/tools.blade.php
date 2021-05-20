@@ -82,7 +82,7 @@
                             </tr>
                         @endforeach
                         
-                        @for ($i = $no; $i <= 55; $i++)
+                        @for ($i = $no; $i < 55; $i++)
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td></td>

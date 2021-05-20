@@ -84,7 +84,7 @@
 
 <div class="pr-hdivider"></div>
 
-@if ($form->practicians > 1)
+@if ($form->type != 'REG')
     <div class="pr-mb-1 pr-bold pr-center" style="font-size: 18px;">
         Daftar Anggota Praktikan
     </div>
@@ -106,14 +106,18 @@
                 </thead>
                 
                 <tbody>
-                    @foreach ($members as $member)
+                    @forelse ($members as $member)
                         <tr>
                             <td class="pr-center">{{ $no++ }}</td>
                             <td>{{ $member->id_number }}</td>
                             <td>{{ $member->name }}</td>
                             <td>{{ $member->phone }}</td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td class="pr-center" colspan="4">Tidak ada data.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
