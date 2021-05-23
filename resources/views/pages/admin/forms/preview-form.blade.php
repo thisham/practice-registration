@@ -1,6 +1,6 @@
 @extends('layouts.html')
 
-@section('title', 'Form Baru')
+@section('title', 'Tinjauan Form')
 
 @section('header')
     @include('components.navs.admin', ['page' => "new-practice"])
@@ -214,7 +214,7 @@
 
             <div class="row center">
                 <div class="col s12">
-                    <a href="{{ route('admin-new-practice-print', ['id' => $form->type . '-' . $form->id]) }}" class="btn btn-large indigo waves-effect waves-light">
+                    <a href="{{ route('admin-form-print', ['id' => $form->type . '-' . $form->id]) }}" class="btn btn-large indigo waves-effect waves-light">
                         <i class="material-icons left">print</i> Cetak Dokumen
                     </a>
                 </div>
