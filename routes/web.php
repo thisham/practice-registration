@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\CourseCtrl;
+use App\Http\Controllers\FormActionCtrl;
 use App\Http\Controllers\LaboratoryCtrl;
 use App\Http\Controllers\NewFormCtrl;
+use App\Http\Controllers\PracticeCancelledCtrl;
 use App\Http\Controllers\PracticeCheckCtrl;
 use App\Http\Controllers\PracticeHistoryCtrl;
 use App\Http\Controllers\PracticePlansCtrl;
 use App\Http\Controllers\PracticeRegistrationCtrl;
+use App\Http\Controllers\PracticeRejectedCtrl;
 use App\Http\Controllers\SessionCtrl;
 use App\Http\Controllers\ToolClassificationCtrl;
 use App\Http\Controllers\UserCtrl;
@@ -59,19 +62,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('logout', [SessionCtrl::class, 'destroy'])->name('logout');
 
+    Route::get('form/preview', [FormActionCtrl::class, 'preview'])->name('admin-form-preview');
+    Route::get('form/{id}/print', [FormActionCtrl::class, 'print'])->name('admin-form-print');
+
     Route::get('form-baru', [NewFormCtrl::class, 'index'])->name('admin-new-practices');
-    Route::get('form-baru/{id}/print', [NewFormCtrl::class, 'print'])->name('admin-new-practice-print');
-    Route::get('form-baru/lihat', [NewFormCtrl::class, 'preview'])->name('admin-new-practice-preview');
 
     Route::get('rencana-praktikum', [PracticePlansCtrl::class, 'index'])->name('admin-practice-plans');
-    Route::get('rencana-praktikum/{id}', [PracticePlansCtrl::class, 'show'])->name('admin-practice-plan');
-    Route::get('rencana-praktikum/{id}/print', [PracticePlansCtrl::class, 'print'])->name('admin-practice-plan-print');
-    Route::get('rencana-praktikum/{id}/edit', [PracticePlansCtrl::class, 'edit'])->name('admin-practice-plan-edit');
-    Route::get('rencana-praktikum/{id}/selesai', [PracticePlansCtrl::class, 'end'])->name('admin-practice-plan-set-expired');
+    Route::get('rencana-praktikum/edit', [PracticePlansCtrl::class, 'adjust'])->name('admin-practice-plan-edit');
+    Route::post('rencana-praktikum/{id}/selesai', [PracticePlansCtrl::class, 'update'])->name('admin-practice-plan-set-done');
     
     Route::get('riwayat-praktikum', [PracticeHistoryCtrl::class, 'index'])->name('admin-practice-histories');
-    Route::get('riwayat-praktikum/{id}', [PracticeHistoryCtrl::class, 'show'])->name('admin-practice-history');
-    Route::get('riwayat-praktikum/{id}/print', [PracticeHistoryCtrl::class, 'print'])->name('admin-practice-history-print');
+    Route::get('praktikum-dibatalkan', [PracticeCancelledCtrl::class, 'index'])->name('admin-practice-cancelled');
+    Route::get('praktikum-ditolak', [PracticeRejectedCtrl::class, 'index'])->name('admin-practice-rejected');
 
     Route::get('laboratorium', [LaboratoryCtrl::class, 'index'])->name('admin-manage-laboratories');
     Route::get('laboratorium/tambah', [LaboratoryCtrl::class, 'create'])->name('admin-add-laboratory');
