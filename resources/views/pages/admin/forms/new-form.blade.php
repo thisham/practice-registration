@@ -27,7 +27,7 @@
         @if (Session::has('msgfailed'))
             @include('components.messageboxes.failed', ['message' => Session::get('msgfailed')])
         @endif
-        
+
         <div class="card">
             <div class="card-action grey lighten-4">
                 <h3 class="card-title">
@@ -149,7 +149,7 @@
     }
 
     function viewForm(id) {
-        window.location.href = `{{ route('admin-new-practice-preview') }}?id=${id}`;
+        window.location.href = `{{ route('admin-form-preview') }}?id=${id}`;
     }
 
     document.addEventListener('DOMContentLoaded', function () {
