@@ -16,6 +16,18 @@
 
 @section('main')
     <div class="container" style="margin-top: 40px;">
+        @if (Session::has('msgsuccess'))
+            @include('components.messageboxes.success', ['message' => Session::get('msgsuccess')])
+        @endif
+
+        @if (Session::has('msgwarning'))
+            @include('components.messageboxes.warning', ['message' => Session::get('msgwarning')])
+        @endif
+
+        @if (Session::has('msgfailed'))
+            @include('components.messageboxes.failed', ['message' => Session::get('msgfailed')])
+        @endif
+        
         <div class="card">
             <div class="card-action grey lighten-4">
                 <h3 class="card-title">
@@ -34,7 +46,7 @@
     function getForms() {
         const cardBody = document.getElementById('card-body');
 
-        fetch("{{ route('api-practice-plans') }}")
+        fetch("{{ route('api-new-form-list') }}")
             .then(response => response.json())
             .then(function (data) {
                 let id = '';
@@ -88,7 +100,7 @@
     }
 
     function acceptForm(id) {
-        fetch("{{ route('api-practice-plans-acc') }}", {
+        fetch("{{ route('api-new-form-acc') }}", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -117,7 +129,7 @@
                 return;
             }
 
-            fetch("{{ route('api-practice-plans-reject') }}", {
+            fetch("{{ route('api-new-form-reject') }}", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
