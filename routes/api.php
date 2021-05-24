@@ -34,8 +34,8 @@ Route::group([], function () {
 
     Route::get('riwayat-praktikum/list', [PracticeHistoryCtrl::class, 'allPractices'])->name('api-practice-history-list');
     Route::get('praktikum-ditolak/list', [PracticeRejectedCtrl::class, 'allPlans'])->name('api-new-form-rejected-list');
-    Route::get('praktikum-ditolak/acc', [PracticeRejectedCtrl::class, 'acc'])->name('api-new-form-rejected-list');
-    Route::get('praktikum-dibatalkan/list', [PracticeCancelledCtrl::class, 'allPractices'])->name('api-practice-plan-canceled-list');
-    Route::get('praktikum-dibatalkan/jalan', [PracticeCancelledCtrl::class, 'acc'])->name('api-practice-plan-canceled-acc');
+    Route::post('praktikum-ditolak/acc', [PracticeRejectedCtrl::class, 'acc'])->name('api-new-form-rejected-acc');
+    Route::get('praktikum-dibatalkan/list', [PracticeCancelledCtrl::class, 'allPractices'])->name('api-practice-plan-cancelled-list');
+    Route::post('praktikum-dibatalkan/jalan', [PracticeCancelledCtrl::class, 'acc'])->name('api-practice-plan-cancelled-acc');
 });
 
