@@ -38,8 +38,16 @@
         <i class="material-icons left">new_releases</i>Form Baru <span id="new-badge" class="new badge hide"></span>
     </a></li>
 
+    <li {{ ($page == "rejected-practices")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-rejected') }}">
+        <i class="material-icons left">close</i>Praktikum Ditolak
+    </a></li>
+
     <li {{ ($page == "practice-plans")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-plans') }}">
         <i class="material-icons left">next_plan</i>Rencana Praktikum
+    </a></li>
+
+    <li {{ ($page == "cancelled-practices")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-cancelled') }}">
+        <i class="material-icons left">not_interested</i>Praktikum Dibatalkan
     </a></li>
 
     <li {{ ($page == "practice-histories")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-practice-histories') }}">
