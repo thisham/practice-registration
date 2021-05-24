@@ -131,7 +131,7 @@ class PracticePlansCtrl extends Controller
         $id = explode('-', $request->id);
         $status = new FormStatus();
         $status->form_id = $id[1];
-        $status->status = 'done';
+        $status->status = 'cancelled';
         $status->message = NULL;
         return ['cancelled' => $status->save()];
     }

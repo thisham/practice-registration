@@ -113,7 +113,7 @@
         })
         .then(function (result) {
             if (!result.isConfirmed) {
-                M.toast({html: `Form ${id} tidak jadi ditolak.`});
+                M.toast({html: `Form ${id} tidak jadi dibatalkan.`});
                 return;
             }
 
@@ -129,8 +129,8 @@
             })
             .then(response => response.json())
             .then(function (data) {
-                if (data.rejected)
-                    M.toast({html: `Form ${id} berhasil ditolak.`});
+                if (data.cancelled)
+                    M.toast({html: `Form ${id} berhasil dibatalkan.`});
                 getForms();
             });
         });

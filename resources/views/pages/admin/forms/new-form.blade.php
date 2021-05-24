@@ -3,7 +3,7 @@
 @section('title', 'Form Baru')
 
 @section('header')
-    @include('components.navs.admin', ['page' => "new-practice"])
+    @include('components.navs.admin', ['page' => "new-practices"])
 @endsection
 
 @section('footer')
