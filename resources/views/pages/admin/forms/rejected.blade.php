@@ -35,8 +35,13 @@
                 </h3>
             </div>
 
-            <div class="card-content" id="card-body">
+            <div class="card-content">
+                <div class="input-field">
+                    <input type="date" name="date_input" id="date-input" value="{{ date('Y-m-d') }}" />
+                    <label for="date-input">Tanggal Praktikum</label>
+                </div>
 
+                <div id="card-body"></div>
             </div>
         </div>
     </div>
@@ -45,8 +50,9 @@
 <script>
     function getForms() {
         const cardBody = document.getElementById('card-body');
+        const practiceDate = document.getElementById('date-input').value;
 
-        fetch("{{ route('api-new-form-rejected-list') }}")
+        fetch(`{{ route('api-new-form-rejected-list') }}?date=${practiceDate}`)
             .then(response => response.json())
             .then(function (data) {
                 let id = '';
@@ -117,6 +123,11 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         getForms();
+        
+        document.getElementById('date-input').addEventListener('change', function () {
+            getForms();
+        });
+
         setInterval(function () {
             getForms();
         }, 10000);

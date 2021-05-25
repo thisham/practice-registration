@@ -12,7 +12,7 @@ class PracticeHistoryCtrl extends Controller
         return view('pages.admin.forms.done');
     }
 
-    public function allPractices()
+    public function allPractices(Request $request)
     {
         $form = Form::join('form_statuses', 'forms.id', '=', 'form_statuses.form_id')
             ->join('practicians', 'forms.id', '=', 'practicians.form_id')
@@ -29,6 +29,7 @@ class PracticeHistoryCtrl extends Controller
                     ->from('practicians');
             })
             ->where('form_statuses.status', 'done')
+            ->where('forms.practice_date', $request->date)
             ->select([
                 'forms.id as id',
                 'forms.type as type',
@@ -39,7 +40,6 @@ class PracticeHistoryCtrl extends Controller
                 'forms.practice_date as practice_date',
                 'forms.practice_start_time as practice_time'
             ])
-            ->limit(10)
             ->get();
 
         return response($form ?? [])->header('Content-Type', 'application/json');

@@ -17,7 +17,7 @@ class PracticePlansCtrl extends Controller
         return view('pages.admin.forms.planned.all');
     }
 
-    public function allPlans()
+    public function allPlans(Request $request)
     {
         $form = Form::join('form_statuses', 'forms.id', '=', 'form_statuses.form_id')
             ->join('practicians', 'forms.id', '=', 'practicians.form_id')
@@ -34,6 +34,7 @@ class PracticePlansCtrl extends Controller
                     ->from('practicians');
             })
             ->where('form_statuses.status', 'accepted')
+            ->where('forms.practice_date', $request->date)
             ->select([
                 'forms.id as id',
                 'forms.type as type',
@@ -44,7 +45,6 @@ class PracticePlansCtrl extends Controller
                 'forms.practice_date as practice_date',
                 'forms.practice_start_time as practice_time'
             ])
-            ->limit(10)
             ->get();
 
         return response($form ?? [])->header('Content-Type', 'application/json');
