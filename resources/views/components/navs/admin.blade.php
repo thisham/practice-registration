@@ -74,11 +74,11 @@
     
     <li><a class="subheader">Akun</a></li>
 
-    <li {{ ($page == "pw-change")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-change-account-info') }}">
+    <li {{ ($page == "info-change")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-change-account-info') }}">
         <i class="material-icons left">settings</i>Pengaturan Akun
     </a></li>
         
-    <li {{ ($page == "info-change")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-change-account-password') }}">
+    <li {{ ($page == "pw-change")? 'class=active': '' }}><a class="waves-effect" href="{{ route('admin-change-account-password') }}">
         <i class="material-icons left">lock</i>Ubah Kata Sandi
     </a></li>
         
